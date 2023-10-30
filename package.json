@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "ytdl-core": "^4.11.5"
+  },
+  "name": "music-downloader",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+    "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jheanbryan/music-downloader.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jheanbryan/music-downloader/issues"
+  },
+  "homepage": "https://github.com/jheanbryan/music-downloader#readme",
+  "devDependencies": {
+    "electron": "^27.0.2"
+  }
+}
