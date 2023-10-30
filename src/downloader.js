@@ -1,24 +1,27 @@
 const ytdl = require('ytdl-core');
 const fs = require('fs');
 
-const { ipcMain } = require('electron');
+//Baixar musicas
+export async function downloadAudio(url) {
+    // URL do vídeo do YouTube
+    const videoURL = url;
 
-ipcMain.on('download-audio', (event, url) => {
-  const videoURL = url;
-  const options = {
-    quality: 'highestaudio',
-    filter: 'audioonly',
-  };
+    // Opções para baixar apenas o áudio
+    const options = {
+        quality: 'highestaudio',
+        filter: 'audioonly',
+    };
 
-  ytdl.getInfo(videoURL)
-    .then((info) => {
-      const title = info.videoDetails.title;
-      const audioStream = ytdl(videoURL, options);
-      audioStream.pipe(fs.createWriteStream(`${title}.mp3`));
+    try {
+        const info = await ytdl.getInfo(videoURL);
+        const title = info.videoDetails.title;
+        console.log(title);
+        const audioStream = ytdl(videoURL, options);
 
-      event.reply('download-audio-response', title); // Responda com o título após o download
-    })
-    .catch((error) => {
-      console.error('Erro ao baixar o áudio:', error);
-    });
-});
+        audioStream.pipe(fs.createWriteStream(`${title}.mp3`));
+
+    } catch (error) {
+        console.error('Erro ao baixar o áudio:', error);
+    }
+
+}
