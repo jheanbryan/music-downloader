@@ -1,8 +1,11 @@
 const ytdl = require('ytdl-core');
 const fs = require('fs');
 
+
+downloadAudio(url) 
+
 //Baixar musicas
-export async function downloadAudio(url) {
+async function downloadAudio(url) {
     // URL do vídeo do YouTube
     const videoURL = url;
 
@@ -15,7 +18,6 @@ export async function downloadAudio(url) {
     try {
         const info = await ytdl.getInfo(videoURL);
         const title = info.videoDetails.title;
-        console.log(title);
         const audioStream = ytdl(videoURL, options);
 
         audioStream.pipe(fs.createWriteStream(`${title}.mp3`));

@@ -1,12 +1,13 @@
 {
   "dependencies": {
+    "fs": "^0.0.1-security",
     "ytdl-core": "^4.11.5"
   },
   "name": "music-downloader",
   "description": "",
   "version": "1.0.0",
   "main": "index.js",
-    "scripts": {
+  "scripts": {
     "start": "electron ."
   },
   "repository": {
